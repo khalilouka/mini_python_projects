@@ -41,5 +41,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-difficulté = input("Choisie la difficulté (facile, moyen, difficile)(f/m/d) : ")
