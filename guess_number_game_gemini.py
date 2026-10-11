@@ -1,7 +1,7 @@
 import random
 
 def play_guessing_game():
-    number_of_guesses= 0
+    number_of_guesses = 0
     # verfier le choix de la difficulté
     while True:
         difficulty = input("Choisie la difficulté (facile, moyen, difficile)(f/m/d) : ").strip().lower()
@@ -12,14 +12,15 @@ def play_guessing_game():
             break
     # demander a user selon la difficulté et creer le nombre recherché 
     if difficulty == "f":
-        number_to_guess = random.randint(1, 10)
-        print("devinez le nombre entre 1 et 10(1 et 10 inclus)")
+        nombre_max = 10
     elif difficulty == "m":
-        number_to_guess = random.randint(1, 50)
-        print("devinez le nombre entre 1 et 50(1 et 50 inclus)")
+        nombre_max = 50
     elif difficulty == "d":
-        number_to_guess = random.randint(1, 100)
-        print("devinez le nombre entre 1 et 100(1 et 100 inclus)")
+        nombre_max = 100
+
+    number_to_guess = random.randint(1, nombre_max)
+
+    print(f"devinez le nombre entre 1 et {nombre_max}(1 et {nombre_max} inclus)")
 
     while number_of_guesses < 5:
         user_number = input("Ton choix: ")
@@ -29,20 +30,11 @@ def play_guessing_game():
 
         user_number = int(user_number)      # transformer le input de str en int
 
-        if difficulty == "f":
-            if not (1 <= user_number <= 10):    #verifiez si l'entré est entre 1 et 10
-                print("Attention, le nombre doit être entre 1 et 10.")
-                continue
-        elif difficulty == "m":
-            if not (1 <= user_number <= 50):    #verifiez si l'entré est entre 1 et 10
-                print("Attention, le nombre doit être entre 1 et 50.")
-                continue
-        elif difficulty == "d":
-            if not (1 <= user_number <= 100):    #verifiez si l'entré est entre 1 et 10
-                print("Attention, le nombre doit être entre 1 et 100.")
-                continue
+        if not (1 <= user_number <= nombre_max):    #verifiez si l'entré est entre 1 et 10
+            print(f"Attention, le nombre doit être entre 1 et {nombre_max}.")
+            continue
 
-        number_of_guesses+=1     # incrementer le nombre d'essais
+        number_of_guesses += 1     # incrementer le nombre d'essais
 
         if user_number == number_to_guess:
             print(f"Bingo! number of guess : {number_of_guesses}")
